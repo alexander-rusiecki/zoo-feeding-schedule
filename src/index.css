@@ -9,3 +9,20 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.app-container {
+  padding: 1rem 2rem;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+
+.animal-card {
+  padding: 1rem 4rem;
+  border: 1px solid grey;
+  border-radius: 0.2em;
+}
+
+.animal-card h1 {
+  text-align: center;
+}

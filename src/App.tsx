@@ -2,9 +2,9 @@ import AnimalList from 'components/AnimalList';
 
 function App() {
   return (
-    <div>
+    <section className="app-container">
       <AnimalList />
-    </div>
+    </section>
   );
 }
 
