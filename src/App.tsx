@@ -1,7 +1,9 @@
+import AnimalList from 'components/AnimalList';
+
 function App() {
   return (
     <div>
-      <h1>react works!</h1>
+      <AnimalList />
     </div>
   );
 }
