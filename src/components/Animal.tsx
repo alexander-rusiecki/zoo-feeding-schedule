@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { IAnimal } from 'interfaces/Animal';
 
 interface IAnimalProps {
@@ -5,12 +6,15 @@ interface IAnimalProps {
 }
 
 const Animal = ({ animal }: IAnimalProps) => {
-  const { name, shortDescription } = animal;
+  const { id, name, shortDescription } = animal;
+
   return (
-    <article className="animal-card">
-      <h1>{name}</h1>
-      <p>{shortDescription}</p>
-    </article>
+    <Link to={`animals/${id}`}>
+      <article className="animal-card">
+        <h1>{name}</h1>
+        <p>{shortDescription}</p>
+      </article>
+    </Link>
   );
 };
 
