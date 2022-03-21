@@ -46,11 +46,15 @@ const AnimalDetails = () => {
     <div className="animal-details-card">
       <h1>{animal?.name}</h1>
       <img src={animal?.imageUrl} alt={animal?.name} />
-      <button onClick={feedAnimal} disabled={nowFed}>
+      <button onClick={feedAnimal} disabled={animal?.isFed}>
         Mata {animal?.name}
       </button>
       <button onClick={() => navigate('/')}>tillbaka</button>
-      {animal?.isFed && <h1>matades senast {animal.lastFed}</h1>}
+      {animal?.isFed && (
+        <h1>
+          {animal.name} matades senast {animal.lastFed}
+        </h1>
+      )}
     </div>
   );
 };

@@ -15,19 +15,36 @@ code {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 1rem;
+  width: 100vw;
 }
 
 .animal-card {
   padding: 1rem 4rem;
   border: 1px solid grey;
   border-radius: 0.2em;
+  min-height: 10rem;
+}
+.animal-link {
+  text-decoration: none;
+}
+.animal-link:visited {
+  color: initial;
 }
 
 .animal-card h1 {
   text-align: center;
 }
 
+.animal-details-card {
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  flex-direction: column;
+}
+
 .animal-details-card img {
-  height: 10rem;
+  height: 20rem;
   width: auto;
 }

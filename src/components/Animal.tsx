@@ -7,9 +7,8 @@ interface IAnimalProps {
 
 const Animal = ({ animal }: IAnimalProps) => {
   const { id, name, shortDescription } = animal;
-
   return (
-    <Link to={`${id}`}>
+    <Link to={`${id}`} className="animal-link">
       <article className="animal-card">
         <h1>{name}</h1>
         <p>{shortDescription}</p>

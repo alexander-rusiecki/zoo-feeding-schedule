@@ -6,11 +6,15 @@ import Animal from 'components/Animal';
 const AnimalList = () => {
   const [animals, setAnimals] = useState<[] | IAnimal[]>([]);
   const getAnimals = async () => {
-    const response = await axios.get<IAnimal[]>(
-      'https://animals.azurewebsites.net/api/animals'
-    );
-    setAnimals(await response.data);
-    localStorage.setItem('animals', JSON.stringify(await response.data));
+    try {
+      const response = await axios.get<IAnimal[]>(
+        'https://animals.azurewebsites.net/api/animals'
+      );
+      setAnimals(await response.data);
+      localStorage.setItem('animals', JSON.stringify(await response.data));
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   useEffect(() => {
