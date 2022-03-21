@@ -26,3 +26,8 @@ code {
 .animal-card h1 {
   text-align: center;
 }
+
+.animal-details-card img {
+  height: 10rem;
+  width: auto;
+}

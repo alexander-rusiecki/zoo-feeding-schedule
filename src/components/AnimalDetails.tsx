@@ -23,7 +23,7 @@ const AnimalDetails = () => {
     const fedAnimal = {
       ...animal,
       isFed: true,
-      lastFed: new Date().toISOString(),
+      lastFed: new Date().toLocaleString(),
     };
     const updatedAnimals = animals?.map((animal: IAnimal) => {
       if (animal.id === Number(params.id)) {
@@ -43,11 +43,14 @@ const AnimalDetails = () => {
   }, [nowFed]);
 
   return (
-    <div>
+    <div className="animal-details-card">
       <h1>{animal?.name}</h1>
-      <button onClick={feedAnimal}>feed</button>
+      <img src={animal?.imageUrl} alt={animal?.name} />
+      <button onClick={feedAnimal} disabled={nowFed}>
+        Mata {animal?.name}
+      </button>
       <button onClick={() => navigate('/')}>tillbaka</button>
-      {animal?.isFed && <h1>matad</h1>}
+      {animal?.isFed && <h1>matades senast {animal.lastFed}</h1>}
     </div>
   );
 };

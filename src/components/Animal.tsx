@@ -9,7 +9,7 @@ const Animal = ({ animal }: IAnimalProps) => {
   const { id, name, shortDescription } = animal;
 
   return (
-    <Link to={`animals/${id}`}>
+    <Link to={`${id}`}>
       <article className="animal-card">
         <h1>{name}</h1>
         <p>{shortDescription}</p>
