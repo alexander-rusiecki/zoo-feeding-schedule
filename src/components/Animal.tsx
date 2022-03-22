@@ -1,6 +1,6 @@
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { IAnimal } from 'interfaces/Animal';
-import { useEffect, useState } from 'react';
 
 interface IAnimalProps {
   animal: IAnimal;
@@ -17,13 +17,16 @@ const Animal = ({ animal }: IAnimalProps) => {
       setIsFourHoursSinceFed(true);
     }
   }, [animal]);
+
   return (
     <Link to={`${id}`} className="animal-link">
       <article className="animal-card">
         <h1>{name}</h1>
         <p>{shortDescription}</p>
         {isFourHoursSinceFed && (
-          <p className="starving">måste matas! senast matad {animal.lastFed}</p>
+          <p className="starving">
+            {animal.name} måste matas! senast matad {animal.lastFed}
+          </p>
         )}
       </article>
     </Link>

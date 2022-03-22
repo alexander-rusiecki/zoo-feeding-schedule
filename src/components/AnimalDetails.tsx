@@ -11,13 +11,12 @@ const AnimalDetails = () => {
     getAnimal();
   }, []);
 
-  const getAnimal = () => {
+  const getAnimal = () =>
     setAnimal(
       JSON.parse(localStorage.getItem('animals')!).find(
         (animal: IAnimal) => animal.id === Number(id)
       )
     );
-  };
 
   return (
     <div className="animal-details-card">

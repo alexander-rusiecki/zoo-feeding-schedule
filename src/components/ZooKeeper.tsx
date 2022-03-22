@@ -1,6 +1,6 @@
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { IAnimal } from 'interfaces/Animal';
-import { useEffect, useState } from 'react';
 
 interface IZooKeeperProps {
   animal: IAnimal | null;
@@ -10,9 +10,7 @@ const ZooKeeper = ({ animal }: IZooKeeperProps) => {
   const [animals, setAnimals] = useState<IAnimal[]>([]);
   const [isThreeHoursSinceFed, setIsThreeHoursSinceFed] =
     useState<boolean>(false);
-
   const [nowFed, setNowFed] = useState<boolean>(false);
-
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -27,6 +25,7 @@ const ZooKeeper = ({ animal }: IZooKeeperProps) => {
       setIsThreeHoursSinceFed(false);
     }
   }, [animal, isThreeHoursSinceFed]);
+
   useEffect(() => {
     if (animal?.isFed) {
       setNowFed(true);
@@ -53,7 +52,6 @@ const ZooKeeper = ({ animal }: IZooKeeperProps) => {
       });
       setNowFed(true);
       setIsThreeHoursSinceFed(false);
-
       localStorage.setItem('animals', JSON.stringify(updatedAnimals));
       setAnimals(JSON.parse(localStorage.getItem('animals')!));
     }
