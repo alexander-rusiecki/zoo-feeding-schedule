@@ -12,11 +12,10 @@ const Animal = ({ animal }: IAnimalProps) => {
 
   useEffect(() => {
     if (!animal) return;
-    if (new Date().getTime() - new Date(animal?.lastFed).getTime() > 20000) {
+    new Date().getTime() - new Date(animal.lastFed).getTime() > 20_000 &&
       setIsNowFed(true);
-    }
   }, [animal]);
-
+  // TODO: change milliseconds
   return (
     <Link to={`${id}`} className="animal-link">
       <article className="animal-card">

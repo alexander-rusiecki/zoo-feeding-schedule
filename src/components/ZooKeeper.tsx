@@ -17,12 +17,13 @@ const ZooKeeper = ({ animal }: IZooKeeperProps) => {
 
   useEffect(() => {
     if (!animal) return;
-    if (new Date().getTime() - new Date(animal?.lastFed).getTime() > 10000) {
+    if (new Date().getTime() - new Date(animal?.lastFed).getTime() > 10_000) {
       setIsNowFed(false);
     } else {
       setIsNowFed(true);
     }
   }, [animal]);
+  // TODO: change milliseconds
 
   const getAnimals = () => {
     setAnimals(JSON.parse(localStorage.getItem('animals')!));
@@ -41,9 +42,9 @@ const ZooKeeper = ({ animal }: IZooKeeperProps) => {
           return currentAnimal;
         }
       });
+      setIsNowFed(true);
       localStorage.setItem('animals', JSON.stringify(updatedAnimals));
       setAnimals(JSON.parse(localStorage.getItem('animals')!));
-      setIsNowFed(true);
     }
   };
 
@@ -55,7 +56,13 @@ const ZooKeeper = ({ animal }: IZooKeeperProps) => {
             Mata {animal.name}
           </button>
           <button onClick={() => navigate('/')}>tillbaka</button>
-          {!isNowFed ? <p>Länge sen</p> : <p>matad {animal.lastFed}</p>}
+          {!isNowFed && (
+            <span className="starving">
+              Det har gått mer än 3 timmar sedan {animal.name}
+              matades!
+              {animal.lastFed}
+            </span>
+          )}
         </>
       )}
     </div>

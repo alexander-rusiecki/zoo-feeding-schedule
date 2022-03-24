@@ -20,12 +20,16 @@ const AnimalDetails = () => {
 
   return (
     <section className="animal-details-card">
-      <img src={animal?.imageUrl} alt={animal?.name} />
-      <ZooKeeper animal={animal} />
-      <h1>Namn: {animal?.name}</h1>
-      <h3>Latinskt namn: {animal?.latinName}</h3>
-      <h3>Födelseår: {animal?.yearOfBirth}</h3>
-      <h3>Mer om mig: {animal?.longDescription}</h3>
+      {animal && (
+        <>
+          <img src={animal.imageUrl} alt={animal.name} />
+          <ZooKeeper animal={animal} />
+          <h1>Namn: {animal.name}</h1>
+          <h3>Latinskt namn: {animal.latinName}</h3>
+          <h3>Födelseår: {animal.yearOfBirth}</h3>
+          <h3>Mer om mig: {animal.longDescription}</h3>
+        </>
+      )}
     </section>
   );
 };
