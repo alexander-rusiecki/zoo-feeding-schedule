@@ -19,11 +19,14 @@ const AnimalDetails = () => {
     );
 
   return (
-    <div className="animal-details-card">
-      <h1>{animal?.name}</h1>
+    <section className="animal-details-card">
       <img src={animal?.imageUrl} alt={animal?.name} />
       <ZooKeeper animal={animal} />
-    </div>
+      <h1>Namn: {animal?.name}</h1>
+      <h3>Latinskt namn: {animal?.latinName}</h3>
+      <h3>Födelseår: {animal?.yearOfBirth}</h3>
+      <h3>Mer om mig: {animal?.longDescription}</h3>
+    </section>
   );
 };
 

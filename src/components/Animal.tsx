@@ -7,14 +7,13 @@ interface IAnimalProps {
 }
 
 const Animal = ({ animal }: IAnimalProps) => {
-  const { id, name, shortDescription } = animal;
-  const [isFourHoursSinceFed, setIsFourHoursSinceFed] =
-    useState<boolean>(false);
+  const { id, name, shortDescription, lastFed } = animal;
+  const [isNowFed, setIsNowFed] = useState<boolean>(false);
 
   useEffect(() => {
     if (!animal) return;
-    if (new Date().getTime() - new Date(animal?.lastFed).getTime() > 20_000) {
-      setIsFourHoursSinceFed(true);
+    if (new Date().getTime() - new Date(animal?.lastFed).getTime() > 20000) {
+      setIsNowFed(true);
     }
   }, [animal]);
 
@@ -23,10 +22,13 @@ const Animal = ({ animal }: IAnimalProps) => {
       <article className="animal-card">
         <h1>{name}</h1>
         <p>{shortDescription}</p>
-        {isFourHoursSinceFed && (
-          <p className="starving">
-            {animal.name} måste matas! senast matad {animal.lastFed}
-          </p>
+        {isNowFed && (
+          <>
+            <span>senast matad {lastFed}</span>
+            <span className="starving">
+              Det har gått mer än 4 timmar sedan {name} matades!
+            </span>
+          </>
         )}
       </article>
     </Link>

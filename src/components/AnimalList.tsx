@@ -25,12 +25,12 @@ const AnimalList = () => {
   };
 
   return (
-    <>
+    <section className="list-container">
       {animals &&
         animals.map((animal: IAnimal) => (
           <Animal animal={animal} key={animal.id} />
         ))}
-    </>
+    </section>
   );
 };
 
