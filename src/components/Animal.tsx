@@ -12,10 +12,11 @@ const Animal = ({ animal }: IAnimalProps) => {
 
   useEffect(() => {
     if (!animal) return;
-    new Date().getTime() - new Date(animal.lastFed).getTime() > 14_400_000 &&
-      // for testing 20 seconds: 20000
+    new Date().getTime() - new Date(lastFed).getTime() > 14_400_000 &&
+      // for testing 20 seconds: 20_000
       setHasFourHoursPassed(true);
-  }, [animal]);
+  }, [animal, lastFed]);
+
   return (
     <Link to={`${id}`} className="animal-link">
       <article className="animal-card">
@@ -24,8 +25,7 @@ const Animal = ({ animal }: IAnimalProps) => {
         {hasFourHoursPassed && (
           <>
             <span>
-              senast matad{' '}
-              {lastFed.toString().replace('T', ' ').substring(0, 19)}
+              matad {lastFed.toString().replace('T', ' kl: ').substring(0, 20)}
             </span>
             <span className="starving">
               Det har gått mer än 4 timmar sedan {name} matades!

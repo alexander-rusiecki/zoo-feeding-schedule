@@ -14,11 +14,11 @@ const AnimalList = () => {
 
   const getAnimals = async () => {
     try {
-      const response = await axios.get<IAnimal[]>(
+      const { data } = await axios.get<IAnimal[]>(
         'https://animals.azurewebsites.net/api/animals'
       );
-      setAnimals(await response.data);
-      localStorage.setItem('animals', JSON.stringify(await response.data));
+      setAnimals(await data);
+      localStorage.setItem('animals', JSON.stringify(await data));
     } catch (error) {
       console.log(error);
     }
